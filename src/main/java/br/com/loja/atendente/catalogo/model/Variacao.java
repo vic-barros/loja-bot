@@ -1,4 +1,4 @@
-package br.com.loja.atendente.catalogo;
+package br.com.loja.atendente.catalogo.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
