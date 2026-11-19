@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 public record VariacaoRequestDto(
 
         @NotBlank(message = "A cor deve ser informada)")
-        @Size(max = 40)
+        @Size(max = 40, message = "A cor deve ter no áximo 40 caracteres")
         String cor,
 
         @NotBlank(message = "O tamanho deve ser informado)")

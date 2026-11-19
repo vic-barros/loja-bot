@@ -23,7 +23,7 @@ public record ProdutoRequestDto(
         String tecido,
 
         @NotNull(message = "O preço do produto deve ser informado")
-        @Positive(message = "O preço não pode ser menor que zero")
+        @Positive(message = "O preço deve ser maior que zero")
         @Digits(integer = 8, fraction = 2, message = "O preço deve ter no máximo duas casas decimais")
         BigDecimal preco,
 
