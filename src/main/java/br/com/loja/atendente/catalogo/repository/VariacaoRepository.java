@@ -28,4 +28,6 @@ public interface VariacaoRepository extends JpaRepository<Variacao, Long> {
                           @Param("cor") String cor,
                           @Param("tamanho") String tamanho,
                           @Param("tecido") String tecido);
+
+    List<Variacao> findByProdutoProdutoId(Long produtoId);
 }

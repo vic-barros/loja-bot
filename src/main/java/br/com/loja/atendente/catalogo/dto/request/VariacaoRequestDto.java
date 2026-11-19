@@ -2,12 +2,12 @@ package br.com.loja.atendente.catalogo.dto.request;
 
 import br.com.loja.atendente.catalogo.model.Produto;
 import br.com.loja.atendente.catalogo.model.Variacao;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 public record VariacaoRequestDto(
-
-        @NotNull(message = "O id do produto deve ser informado")
-        Produto produtoId,
 
         @NotBlank(message = "A cor deve ser informada)")
         @Size(max = 40)

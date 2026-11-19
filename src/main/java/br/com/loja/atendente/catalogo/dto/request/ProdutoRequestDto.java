@@ -2,6 +2,7 @@ package br.com.loja.atendente.catalogo.dto.request;
 
 import br.com.loja.atendente.catalogo.model.Categoria;
 import br.com.loja.atendente.catalogo.model.Produto;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
@@ -22,10 +23,12 @@ public record ProdutoRequestDto(
         String tecido,
 
         @NotNull(message = "O preço do produto deve ser informado")
-        @Positive
-        @Digits(integer = 8, fraction = 2)
+        @Positive(message = "O preço não pode ser menor que zero")
+        @Digits(integer = 8, fraction = 2, message = "O preço deve ter no máximo duas casas decimais")
         BigDecimal preco,
 
+        @NotEmpty(message = "Informe pelo menos uma variação do produto")
+        @Valid
         List<VariacaoRequestDto> variacoes
 ) {
 
