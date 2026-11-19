@@ -11,4 +11,6 @@ public interface FotoProdutoRepository extends JpaRepository<FotoProduto, Long> 
 
     // Lista as fotos de um produto em ordem
     List<FotoProduto> findByProdutoProdutoIdOrderByOrdemAsc(Long produtoId);
+
+    Boolean existsByProdutoProdutoIdAndOrdem(Long produtoId, Integer ordem);
 }
