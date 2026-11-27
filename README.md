@@ -59,7 +59,9 @@ O Claude nunca acessa o banco diretamente: ele decide qual *tool* usar, e o cód
    DATABASE_URL=jdbc:postgresql://localhost:5432/atendente
    DATABASE_USER=atendente
    DATABASE_PASSWORD=sua_senha
+   FLYWAY_LOCATIONS=classpath:db/migration,classpath:db/dev
    ```
+   A última linha carrega os **dados de exemplo** (6 categorias e 10 produtos de moda fitness e praia, em `src/main/resources/db/dev`). Sem ela, o banco sobe vazio, como em produção.
 3. Suba a aplicação:
    ```bash
    ./mvnw spring-boot:run        # Linux/macOS
@@ -67,6 +69,19 @@ O Claude nunca acessa o banco diretamente: ele decide qual *tool* usar, e o cód
    ```
 
 A aplicação sobe em `http://localhost:8080`.
+
+## Testando a API
+
+| Método | Endpoint | O que faz |
+|---|---|---|
+| `POST` | `/categorias` | Cadastra uma categoria |
+| `GET` | `/categorias` | Lista as categorias em ordem alfabética |
+| `POST` | `/produtos` | Cadastra um produto com suas variações (cor, tamanho, estoque); o SKU é gerado pelo sistema |
+| `GET` | `/produtos/{produtoId}` | Detalhes de um produto, com variações e fotos |
+| `GET` | `/produtos/busca?categoria=&cor=&tamanho=&tecido=` | Busca de peças disponíveis (filtros opcionais) — a consulta que o agente de IA vai usar |
+| `POST` | `/produtos/{produtoId}/fotos` | Adiciona uma foto a um produto |
+
+Uma coleção do Postman com todos os cenários, inclusive os de erro, está em [`docs/postman`](docs/postman/loja-bot-fase1.postman_collection.json). Importe no Postman e rode as pastas na ordem.
 
 ## Roadmap
 
